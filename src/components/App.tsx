@@ -3,6 +3,8 @@ import Main from './Main';
 import Create from './Create';
 import Editor from './Editor';
 
+import '../scss/main.scss';
+
 function App() {
   return (
     <Router>

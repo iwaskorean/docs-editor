@@ -1,23 +1,30 @@
+import Card from './Card';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 
-const Main: React.FC = () => {
+const Main = () => {
   const [docs, setDocs] = useState<firebase.firestore.DocumentData[]>();
 
   useEffect(() => {
-    firebase
-      .firestore()
-      .collection('docs')
-      .onSnapshot((serverUpdate) => {
-        const docsFromDB = serverUpdate.docs.map((doc) => {
-          const data = doc.data();
-          data['id'] = doc.id;
-          return data;
+    let unmounted = false;
+
+    !unmounted &&
+      firebase
+        .firestore()
+        .collection('docs')
+        .onSnapshot((serverUpdate) => {
+          const docsFromDB = serverUpdate.docs.map((doc) => {
+            const data = doc.data();
+            data['id'] = doc.id;
+            return data;
+          });
+          setDocs(docsFromDB);
         });
-        console.log(docsFromDB);
-        setDocs(docsFromDB);
-      });
+
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   return (
@@ -29,13 +36,7 @@ const Main: React.FC = () => {
           ?.sort((a, b) => b.timestamp - a.timestamp)
           .map((doc) => {
             return (
-              <Link to={`/document?id=${doc.id}`} key={doc.id}>
-                <div>
-                  <h2>{doc.title}</h2>
-                  <h3>{doc.body}</h3>
-                  <h4>{doc.size}</h4>
-                </div>
-              </Link>
+              <Card key={doc.id} docs={docs} doc={doc} setDocs={setDocs} />
             );
           })}
       <Link to="/create">

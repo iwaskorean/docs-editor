@@ -6,7 +6,13 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [size, setSize] = useState('');
 
-  const createDoc = async (title: string) => {
+  const createDoc = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (!title || !size) {
+      e.preventDefault();
+      alert('Titlte and Size are required.');
+    }
     await firebase.firestore().collection('docs').add({
       title: title,
       body: '',
@@ -53,7 +59,7 @@ const Create = () => {
         <Link to={`/`}>
           <button
             className="create__form__button button"
-            onClick={() => createDoc(title)}
+            onClick={(e) => createDoc(e)}
           >
             Create
           </button>

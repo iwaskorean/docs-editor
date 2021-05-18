@@ -1,22 +1,37 @@
 import { useEffect, useState } from 'react';
-import queryString from 'query-string';
 import { RouteComponentProps } from 'react-router';
-import 'quill/dist/quill.snow.css';
+import queryString from 'query-string';
 import firebase from 'firebase';
 import ReactQuill from 'react-quill';
-import './styles.css';
+import 'quill/dist/quill.snow.css';
 
-// const TOOLBAR_OPTIONS = [
-//   [{ header: [1, 2, 3, 4, 5, 6, false] }],
-//   [{ font: [] }],
-//   [{ list: 'ordered' }, { list: 'bullet' }],
-//   ['bold', 'italic', 'underline'],
-//   [{ color: [] }, { background: [] }],
-//   [{ script: 'sub' }, { script: 'super' }],
-//   [{ align: [] }],
-//   ['image', 'blockquote', 'code-block'],
-//   ['clean'],
-// ];
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ font: [] }],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['bold', 'italic', 'underline'],
+    [{ color: [] }, { background: [] }],
+    [{ script: 'sub' }, { script: 'super' }],
+    [{ align: [] }],
+    ['image', 'blockquote', 'code-block'],
+    ['clean'],
+  ],
+};
+
+const formats = [
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+];
 
 const Document = ({ location }: RouteComponentProps) => {
   const [docId, setDocId] = useState<string | string[] | null>();
@@ -59,7 +74,8 @@ const Document = ({ location }: RouteComponentProps) => {
           <ReactQuill
             className="container"
             theme="snow"
-            // modules={TOOLBAR_OPTIONS}
+            modules={modules}
+            formats={formats}
             value={text}
             onChange={(value) => setText(value)}
           />

@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import { PROJECT_ID } from './config';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBIoWsyg-tsZCQgmTv6DD_gySBNLWITe1s',
-  authDomain: 'evernote-clone-26968.firebaseapp.com',
-  projectId: 'evernote-clone-26968',
-  storageBucket: 'evernote-clone-26968.appspot.com',
-  messagingSenderId: '1097424883205',
-  appId: '1:1097424883205:web:be055e55e9b9d32114566c',
-  measurementId: 'G-51W5RJ0GMT',
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 firebase.initializeApp(firebaseConfig);
 
