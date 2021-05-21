@@ -28,19 +28,21 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Main</h2>
-      <br />
-      {docs &&
-        docs
-          ?.sort((a, b) => b.timestamp - a.timestamp)
-          .map((doc) => {
-            return (
-              <Card key={doc.id} docs={docs} doc={doc} setDocs={setDocs} />
-            );
-          })}
+    <div className="main">
+      <header className="main__heading">Document Editor</header>
+      <p className="main__text">Select a document</p>
+      <div className="main__cards">
+        {docs &&
+          docs
+            ?.sort((a, b) => b.timestamp - a.timestamp)
+            .map((doc) => {
+              return (
+                <Card key={doc.id} docs={docs} doc={doc} setDocs={setDocs} />
+              );
+            })}
+      </div>
       <Link to="/create">
-        <button>Create</button>
+        <button className="main__button--create">Create New Document</button>
       </Link>
       <br />
     </div>

@@ -7,13 +7,15 @@ import '../scss/main.scss';
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/create" exact component={Create} />
-        <Route path="/document" component={Editor} />
-      </Switch>
-    </Router>
+    <div className="wrapper">
+      <Router>
+        <Switch>
+          <Route path="/" exact component={Main} />
+          <Route path="/create" exact component={Create} />
+          <Route path="/document" component={Editor} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
