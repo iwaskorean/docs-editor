@@ -1,0 +1,38 @@
+@import './base';
+
+.main {
+  width: 80%;
+  height: 100vh;
+  @include flex-d-a-j(column, center, flex-start);
+  text-align: center;
+  &__heading {
+    width: 100%;
+    @include font-s-c-w(3rem, $black, $font-extra-bold);
+    // font-style: italic;
+    margin: 1rem 0 1rem 0;
+    letter-spacing: 2px;
+    word-spacing: 3px;
+  }
+  &__text {
+    @include font-s-c-w(1.5rem, $black, $font-bold);
+    width: 100%;
+    text-align: left;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+  }
+  &__cards {
+    width: 100%;
+    min-height: 20rem;
+    flex: 1;
+    @include flex-d-a-j(row, center, space-around);
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    border: black dotted 4px;
+  }
+  &__button--create {
+    margin: 2rem 0 1rem 0;
+    padding: 0.7rem 1.4rem;
+    font-size: 1.3rem;
+    box-shadow: 0px 2px 7px rgba(10, 23, 41, 0.836);
+  }
+}

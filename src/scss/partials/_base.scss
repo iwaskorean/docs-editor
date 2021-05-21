@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;0,900;1,600;1,700&display=swap');
+
+$font-light: 300;
+$font-regular: 400;
+$font-bold: 600;
+$font-bolder: 700;
+$font-extra-bold: 900;
+
+$blue: rgba(42, 74, 140, 1);
+$white: rgba(242, 242, 242, 1);
+$light-gray: rgba(191, 191, 191, 1);
+$gray: rgba(114, 114, 114, 1);
+$black: rgba(38, 38, 38, 1);
+
+$background: rgba(240, 240, 240, 0.85);
+
+@mixin flex-d-a-j($direction, $align, $jusitfy) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $jusitfy;
+}
+
+@mixin font-s-c-w($size, $color, $weight) {
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+button,
+input {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: $font-regular;
+  font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
