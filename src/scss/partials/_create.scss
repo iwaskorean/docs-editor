@@ -1,1 +1,90 @@
 @import './base';
+
+.create {
+  width: 85%;
+  text-align: center;
+  @include flex-d-a-j(column, center, center);
+  &__heading {
+    @include font-s-c-w(2.8rem, $black, $font-extra-bold);
+    margin: 2rem 1rem;
+  }
+  &__form {
+    width: 50%;
+    &__input {
+      margin: 1rem 0;
+      @include flex-d-a-j(row, center, center);
+      p,
+      input {
+        @include font-s-c-w(1.5rem, $black, $font-bold);
+      }
+      .input--text {
+        background-color: $light-gray;
+        padding: 0.3rem 0.8rem;
+        min-width: 17rem;
+        flex: 1;
+        margin-left: 1rem;
+        border: none;
+        outline: 0;
+        border-radius: 5px;
+        &:focus {
+          border: 3px dotted $black;
+        }
+        &::placeholder {
+          @include font-s-c-w(1.3rem, $gray, $font-light);
+          font-style: italic;
+          letter-spacing: 1.1px;
+        }
+      }
+      label {
+        width: 7rem;
+        cursor: pointer;
+        @include font-s-c-w(1.5rem, $black, $font-bold);
+        .input--radio {
+          background-color: $gray;
+          width: 2rem;
+          height: 1rem;
+        }
+      }
+    }
+  }
+  &__form__button {
+    font-size: 1.3rem;
+    padding: 0.4rem 1rem;
+    margin: 1.5rem;
+  }
+}
+
+.paper {
+  width: 50%;
+  height: 25rem;
+  text-align: center;
+  &__text {
+    width: 100%;
+    @include font-s-c-w(1.5rem, $gray, $font-bolder);
+    font-style: italic;
+    margin-top: 40%;
+  }
+  &__content {
+    height: 95%;
+    display: none;
+    background-color: $white;
+    box-shadow: 0px 0px 8px rgba(107, 107, 107, 0.623);
+    p {
+      &:first-child {
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+      }
+    }
+    &.letter {
+      width: 80%;
+    }
+    &.a4 {
+      width: 78%;
+      height: 100%;
+    }
+    &.active {
+      @include flex-d-a-j(column, center, center);
+      animation: paper 0.3s forwards;
+    }
+  }
+}

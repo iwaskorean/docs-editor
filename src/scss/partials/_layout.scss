@@ -5,9 +5,30 @@
 
 .wrapper {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: $background;
   @include flex-d-a-j(column, center, center);
+  &--create {
+    width: 90%;
+    @include flex-d-a-j(row, center, center);
+  }
+  overflow-y: hidden;
+}
+
+.alert {
+  position: absolute;
+  margin-top: 80vh;
+  margin-left: auto;
+  width: 20rem;
+  padding: 1rem 0rem;
+  border-radius: 10px;
+  background-color: rgb(228, 101, 101);
+  text-align: center;
+  transition: all 0.3s;
+  @include font-s-c-w(1.3rem, $white, $font-bold);
+  &--false {
+    margin-top: 120vh;
+  }
 }
 
 button {

@@ -11,7 +11,7 @@
   &__contents {
     letter-spacing: 1.5px;
     &__title {
-      @include font-s-c-w(1.9rem, $black, $font-bolder);
+      @include font-s-c-w(1.7rem, $black, $font-bolder);
     }
     &__size,
     &__time {

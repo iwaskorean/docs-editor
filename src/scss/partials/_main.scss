@@ -8,7 +8,6 @@
   &__heading {
     width: 100%;
     @include font-s-c-w(3rem, $black, $font-extra-bold);
-    // font-style: italic;
     margin: 1rem 0 1rem 0;
     letter-spacing: 2px;
     word-spacing: 3px;
@@ -20,14 +19,22 @@
     font-style: italic;
     margin-bottom: 0.5rem;
   }
+  &__loading {
+    p {
+      @include font-s-c-w(3rem, $black, $font-bolder);
+      font-style: italic;
+      margin: 3rem 0;
+    }
+  }
   &__cards {
     width: 100%;
     min-height: 20rem;
-    flex: 1;
-    @include flex-d-a-j(row, center, space-around);
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(auto, 18rem));
+    justify-content: center;
+    align-items: center;
     overflow-y: scroll;
-    border: black dotted 4px;
+    border: black dotted 0.35rem;
   }
   &__button--create {
     margin: 2rem 0 1rem 0;

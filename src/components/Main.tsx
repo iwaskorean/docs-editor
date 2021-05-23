@@ -5,6 +5,7 @@ import firebase from 'firebase';
 
 const Main = () => {
   const [docs, setDocs] = useState<firebase.firestore.DocumentData[]>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let unmounted = false;
@@ -20,6 +21,7 @@ const Main = () => {
             return data;
           });
           setDocs(docsFromDB);
+          setLoading(false);
         });
 
     return () => {
@@ -31,16 +33,22 @@ const Main = () => {
     <div className="main">
       <header className="main__heading">Document Editor</header>
       <p className="main__text">Select a document</p>
-      <div className="main__cards">
-        {docs &&
-          docs
-            ?.sort((a, b) => b.timestamp - a.timestamp)
-            .map((doc) => {
-              return (
-                <Card key={doc.id} docs={docs} doc={doc} setDocs={setDocs} />
-              );
-            })}
-      </div>
+      {loading ? (
+        <div className="main__loading">
+          <p>Loading ...</p>
+        </div>
+      ) : (
+        <div className="main__cards">
+          {docs &&
+            docs
+              ?.sort((a, b) => b.timestamp - a.timestamp)
+              .map((doc) => {
+                return (
+                  <Card key={doc.id} docs={docs} doc={doc} setDocs={setDocs} />
+                );
+              })}
+        </div>
+      )}
       <Link to="/create">
         <button className="main__button--create">Create New Document</button>
       </Link>

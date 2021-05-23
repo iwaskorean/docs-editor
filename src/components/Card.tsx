@@ -27,11 +27,15 @@ const Card: React.FC<CardProps> = ({ docs, doc, setDocs }) => {
 
   doc.timestamp && timestampToDate(doc.timestamp);
 
+  const capitalize = (word: string) => {
+    return word && word[0].toUpperCase() + word.slice(1);
+  };
+
   return (
     <div className="card">
       <div className="card__contents">
         <p className="card__contents__title">{doc.title}</p>
-        <p className="card__contents__size">size : {doc.size}</p>
+        <p className="card__contents__size">Size : {capitalize(doc.size)}</p>
         {doc.timestamp && (
           <p className="card__contents__time">
             {timestampToDate(doc.timestamp)}
