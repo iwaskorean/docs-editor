@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -74,6 +74,9 @@ const Create = () => {
             <button className="create__form__button button">Cancel</button>
           </Link>
         </div>
+        <p className={`alert alert--${alert}`}>
+          Title and Size are required ...
+        </p>
       </div>
       <div className="paper">
         {!size && <p className="paper__text">Choose the paper size...</p>}
@@ -89,9 +92,6 @@ const Create = () => {
           <p>215.9mm x 279.4mm</p>
           <p>8.5in x 11in</p>
         </div>
-      </div>
-      <div className={`alert alert--${alert}`}>
-        <p>Title and Size are required !!</p>
       </div>
     </div>
   );

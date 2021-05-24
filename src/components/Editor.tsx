@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 import queryString from 'query-string';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+
 import ReactQuill from 'react-quill';
 import 'quill/dist/quill.snow.css';
 
@@ -68,11 +69,11 @@ const Document = ({ location }: RouteComponentProps) => {
   };
 
   return (
-    <div>
+    <div className="editor">
       {doc && (
         <>
           <ReactQuill
-            className="container"
+            className={`edtior__container container ${doc.size}`}
             theme="snow"
             modules={modules}
             formats={formats}

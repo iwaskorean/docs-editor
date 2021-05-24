@@ -63,6 +63,7 @@
     @include font-s-c-w(1.5rem, $gray, $font-bolder);
     font-style: italic;
     margin-top: 40%;
+    text-align: left;
   }
   &__content {
     height: 95%;

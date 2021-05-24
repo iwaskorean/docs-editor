@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 interface CardProps {
   docs: firebase.firestore.DocumentData[];

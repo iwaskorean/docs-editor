@@ -3,6 +3,7 @@
 .main {
   width: 80%;
   height: 100vh;
+  min-height: 30rem;
   @include flex-d-a-j(column, center, flex-start);
   text-align: center;
   &__heading {
@@ -28,7 +29,6 @@
   }
   &__cards {
     width: 100%;
-    min-height: 20rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(auto, 18rem));
     justify-content: center;

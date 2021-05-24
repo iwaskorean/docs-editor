@@ -1,7 +1,7 @@
 import Card from './Card';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 const Main = () => {
   const [docs, setDocs] = useState<firebase.firestore.DocumentData[]>();
@@ -52,7 +52,6 @@ const Main = () => {
       <Link to="/create">
         <button className="main__button--create">Create New Document</button>
       </Link>
-      <br />
     </div>
   );
 };
