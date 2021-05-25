@@ -46,3 +46,17 @@ button {
     transform: translateY(-10%);
   }
 }
+
+.react-confirm-alert-button-group {
+  button {
+    background-color: $blue;
+    font-size: 1.1rem;
+    margin-right: 1.5rem;
+  }
+}
+
+.react-confirm-alert-body {
+  h1 {
+    margin: 1rem 0;
+  }
+}
