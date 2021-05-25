@@ -1,7 +1,7 @@
 @import './base';
 
 .editor {
-  min-width: 800px; // to fix
+  min-width: 800px;
   .container {
     &.a4 {
       .ql-container {
@@ -47,6 +47,75 @@
         box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
       }
     }
+  }
+}
+
+.button--menu,
+.menu {
+  background-color: $blue;
+  position: fixed;
+  top: 40%;
+  left: 0px;
+  border-radius: 0 5px 5px 0;
+  padding-left: 1rem;
+  @include flex-d-a-j(column, flex-start, center);
+  @include font-s-c-w(1.1rem, $white, $font-regular);
+}
+
+.button--menu {
+  width: 4rem;
+  height: 7rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    width: 4.5rem;
+    .icon--rightarrow {
+      width: 2.5rem;
+    }
+  }
+  .icon--rightarrow {
+    width: 2rem;
+    height: 2rem;
+    transition: all 0.3s;
+  }
+}
+.menu {
+  width: 19rem;
+  height: 15rem;
+  z-index: 10;
+  transform: translateX(-100%);
+  transition: all 0.3s;
+  letter-spacing: 1.1px;
+  &.active {
+    transform: translateX(0%);
+    p {
+      width: 80%;
+      text-align: left;
+      &:first-child {
+        font-size: 1.4rem;
+        margin: 0.3rem 0;
+        font-style: italic;
+        letter-spacing: 2.5px;
+      }
+    }
+  }
+  .button--save {
+    font-size: 0.9rem;
+    margin-top: 0.2rem;
+    background-color: rgb(17, 16, 77);
+    padding: 0.4rem 0.8rem;
+    letter-spacing: 2px;
+    &.mg-top {
+      margin-top: 1rem;
+    }
+  }
+  .icon--leftarrow {
+    transform: rotate(180deg);
+    width: 1.8rem;
+    position: absolute;
+    top: 40%;
+    left: 85%;
+    cursor: pointer;
   }
 }
 

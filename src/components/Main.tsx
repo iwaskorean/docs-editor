@@ -31,6 +31,15 @@ const Main = () => {
 
   return (
     <div className="main">
+      <div className="menu--social icon--github">
+        <a
+          href="https://github.com/SewookHan/docs-editor"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img src="./icon--github.png" alt="" />
+        </a>
+      </div>
       <header className="main__heading">Document Editor</header>
       <p className="main__text">Select a document</p>
       {loading ? (

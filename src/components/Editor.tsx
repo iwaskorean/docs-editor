@@ -5,6 +5,7 @@ import firebase from 'firebase/app';
 
 import ReactQuill from 'react-quill';
 import 'quill/dist/quill.snow.css';
+import { Link } from 'react-router-dom';
 
 const modules = {
   toolbar: [
@@ -38,6 +39,7 @@ const Document = ({ location }: RouteComponentProps) => {
   const [docId, setDocId] = useState<string | string[] | null>();
   const [doc, setDoc] = useState<firebase.firestore.DocumentData>();
   const [text, setText] = useState<string>();
+  const [menu, setMenu] = useState(false);
 
   useEffect(() => {
     const { id } = queryString.parse(location.search);
@@ -51,7 +53,6 @@ const Document = ({ location }: RouteComponentProps) => {
         .collection('docs')
         .doc(docId?.toString())
         .onSnapshot((doc) => {
-          console.log(doc.data());
           setDoc(doc.data());
         });
     }
@@ -68,8 +69,41 @@ const Document = ({ location }: RouteComponentProps) => {
     });
   };
 
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
+
   return (
     <div className="editor">
+      <div className="editor__button--menu button--menu" onClick={handleMenu}>
+        <img className="icon--rightarrow" src="./icon--rightarrow.png" alt="" />
+      </div>
+      <div
+        className={`editor__menu menu ${menu && 'active'}`}
+        onClick={handleMenu}
+      >
+        <p>Current Document</p>
+        <p>‣ Title : {doc?.title}</p>
+        <p>‣ Size : {doc?.size}</p>
+        <img
+          className="icon--leftarrow"
+          src="./icon--rightarrow.png"
+          alt=""
+          onClick={handleMenu}
+        />
+        <button
+          className="button--save mg-top"
+          onClick={() => {
+            updateBody();
+            handleMenu();
+          }}
+        >
+          Save
+        </button>
+        <Link to="/">
+          <button className="button--save">Return to main page</button>
+        </Link>
+      </div>
       {doc && (
         <>
           <ReactQuill
@@ -80,7 +114,6 @@ const Document = ({ location }: RouteComponentProps) => {
             value={text}
             onChange={(value) => setText(value)}
           />
-          <button onClick={() => updateBody()}>save</button>
         </>
       )}
     </div>

@@ -12,6 +12,9 @@ const Create = () => {
   ) => {
     if (!title || !size) {
       setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 1500);
       e.preventDefault();
     } else {
       await firebase.firestore().collection('docs').add({

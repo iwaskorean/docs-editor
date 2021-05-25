@@ -1,7 +1,7 @@
 @import './base';
 
 .card {
-  background-color: $white;
+  background-color: #fff;
   padding: 1rem 0.5rem;
   margin: 2rem;
   width: 15rem;
@@ -12,6 +12,7 @@
     letter-spacing: 1.5px;
     &__title {
       @include font-s-c-w(1.7rem, $black, $font-bolder);
+      overflow-x: hidden;
     }
     &__size,
     &__time {
