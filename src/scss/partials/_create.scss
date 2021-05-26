@@ -10,6 +10,9 @@
   }
   &__form {
     width: 50%;
+    @media (max-width: 1024px) {
+      width: 70%;
+    }
     &__input {
       margin: 1rem 0;
       @include flex-d-a-j(row, center, center);
@@ -58,6 +61,9 @@
   width: 50%;
   height: 25rem;
   text-align: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
   &__text {
     width: 100%;
     @include font-s-c-w(1.5rem, $gray, $font-bolder);
