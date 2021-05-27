@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 
@@ -6,6 +6,12 @@ const Create = () => {
   const [title, setTitle] = useState('');
   const [size, setSize] = useState('');
   const [alert, setAlert] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      setAlert(false);
+    };
+  }, []);
 
   const createDoc = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

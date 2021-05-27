@@ -29,6 +29,12 @@ const Main = () => {
     };
   }, []);
 
+  useEffect(() => {
+    return () => {
+      setLoading(true);
+    };
+  }, []);
+
   return (
     <div className="main">
       <div className="menu--social icon--github">
